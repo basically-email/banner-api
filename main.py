@@ -18,10 +18,10 @@ def index():
 @app.route('/banner/<int:id>')
 def banner(id):
     data = json.loads(requests.get(f"https://canary.discordapp.com/api/v9/users/{id}", headers={'Authorization': 'Bot {}'.format(os.environ['TOKEN'])}).text)
-    avatar = f"https://cdn.discordapp.com/avatars/{id}/{data['avatar']}.png"
-
+    avatar_url = f"https://cdn.discordapp.com/avatars/{id}/{data['avatar']}.png"
+    avatar = requests.get(avatar_url).content
     background = Image.open("welcomeTemplate.png") 
-    data = BytesIO(await asset.read())
+    data = BytesIO(avatar.read())
 
     pfp = Image.open(data).convert("RGBA")
     pfp = circle(pfp)
