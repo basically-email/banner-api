@@ -1,4 +1,8 @@
 requests
+pillow
+io
+numpy
+asyncio
 
 click
 Flask
