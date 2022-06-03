@@ -1,6 +1,6 @@
 requests
 pillow
-io
+bytesbufio
 numpy
 asyncio
 
