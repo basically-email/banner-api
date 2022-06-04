@@ -33,9 +33,9 @@ def banner(id):
     member_text = (f"Welcome {data['username']}")
     
     w, h = draw.textsize(member_text)
-    draw.text(((2400-w)/2,650), member_text,font=font)
+    draw.text(((2400-w)//2,650), member_text,font=font)
 
-    background.paste(pfp, ((2400/2)-512/2,123), pfp) 
+    background.paste(pfp, ((2400//2)-512//2,123), pfp) 
     background.save(f'{id}.png')
     return send_file(f'{id}.png', mimetype='image/gif')
     
