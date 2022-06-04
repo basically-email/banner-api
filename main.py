@@ -26,6 +26,24 @@ def banner(id):
     byte_pfp = BytesIO(avatar)
 
     pfp = Image.open(byte_pfp).convert("RGBA")
+    
+    npImage=np.array(pfp)
+    h,w=pfp.size
+
+    # Create same size alpha layer with circle
+    alpha = Image.new('L', pfp.size,0)
+    draw = ImageDraw.Draw(alpha)
+    draw.pieslice([0,0,h,w],0,360,fill=255)
+
+    # Convert alpha Image to numpy array
+    npAlpha=np.array(alpha)
+
+    # Add alpha layer to RGB
+    npImage=np.dstack((npImage,npAlpha))
+
+    # Save with alpha
+    pfp = Image.open(Image.fromarray(npImage))
+    
     pfp = pfp.resize((512,512))
 
     draw = ImageDraw.Draw(background)
