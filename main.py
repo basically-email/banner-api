@@ -52,7 +52,7 @@ def banner(id):
     w, h = draw.textsize(member_text, font)
     draw.text(((2400-w)//2,650), member_text,font=font)
 
-    background.paste(pfp, ((2400//2)-400//2,123), pfp) 
+    background.paste(pfp, ((990,130), pfp) 
     background.save(f'{id}.png')
     return send_file(f'{id}.png', mimetype='image/gif')
     
