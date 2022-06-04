@@ -27,18 +27,23 @@ def banner(id):
 
     pfp = Image.open(byte_pfp).convert("RGBA")
     
-    height,width = pfp.size
-    lum_img = Image.new('L', [height,width] , 0)
-
-    draw = ImageDraw.Draw(lum_img)
-    draw.pieslice([(0,0), (height,width)], 0, 360, 
-                  fill = 255, outline = "white")
-    img_arr =np.array(pfp)
-    lum_img_arr =np.array(lum_img)
-    pfp = BytesIO(np.dstack((img_arr,lum_img_arr)))
-    pfp = Image.open(pfp).convert("RGBA")
     
-    pfp = pfp.resize((512,512))
+    width, height = pfp.size
+    x = (width - height)//2
+    img_cropped = pfp.crop((x, 0, x+height, height))
+
+    # create grayscale image with white circle (255) on black background (0)
+    mask = Image.new('L', img_cropped.size)
+    mask_draw = ImageDraw.Draw(mask)
+    width, height = img_cropped.size
+    mask_draw.ellipse((0, 0, width, height), fill=255)
+    #mask.show()
+
+    # add mask as alpha channel
+    img_cropped.putalpha(mask)
+    
+    
+    pfp = img_cropped.resize((512,512))
 
     draw = ImageDraw.Draw(background)
     font = ImageFont.truetype("KdamThmorPro.ttf",120) 
