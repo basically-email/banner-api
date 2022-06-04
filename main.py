@@ -36,6 +36,7 @@ def banner(id):
     img_arr =np.array(pfp)
     lum_img_arr =np.array(lum_img)
     pfp = BytesIO(np.dstack((img_arr,lum_img_arr)))
+    pfp = Image.open(pfp).convert("RGBA")
     
     pfp = pfp.resize((512,512))
 
