@@ -29,7 +29,7 @@ def banner(id):
     pfp = pfp.resize((265,265))
 
     draw = ImageDraw.Draw(background)
-    font = ImageFont.truetype("KdamThmorPro.otf",42) 
+    font = ImageFont.truetype("KdamThmorPro.ttf",42) 
     member_text = (f"Welcome {data['username']}")
     draw.text((383,410),member_text,font=font)
 
