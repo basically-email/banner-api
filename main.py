@@ -11,9 +11,11 @@ import numpy as np
 app = Flask(__name__, template_folder='.')
 app.config["DEBUG"] = False
 
+'''
 @app.route('/')
 def index():
     return redirect('https://basically.email/discord')
+'''
 
 @app.route('/banner/<int:id>')
 def banner(id):
@@ -24,7 +26,6 @@ def banner(id):
     data = BytesIO(avatar)
 
     pfp = Image.open(data).convert("RGBA")
-    pfp = circle(pfp)
     pfp = pfp.resize((265,265))
 
     draw = ImageDraw.Draw(background)
