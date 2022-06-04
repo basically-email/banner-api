@@ -32,8 +32,8 @@ def banner(id):
     font = ImageFont.truetype("KdamThmorPro.ttf",120) 
     member_text = (f"Welcome {data['username']}")
     
-    w, h = draw.textsize(member_text)
-    draw.text(((2400-(len(member_text)*30))//2,650), member_text,font=font)
+    w, h = draw.textsize(member_text, font)
+    draw.text(((2400-w)//2,650), member_text,font=font)
 
     background.paste(pfp, ((2400//2)-400//2,123), pfp) 
     background.save(f'{id}.png')
