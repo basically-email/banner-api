@@ -35,7 +35,6 @@ def banner(id):
                   fill = 255, outline = "white")
     img_arr =np.array(pfp)
     lum_img_arr =np.array(lum_img)
-    display(Image.fromarray(lum_img_arr))
     pfp = Image.open(BytesIO(Image.fromarray(np.dstack((img_arr,lum_img_arr)))))
     
     pfp = pfp.resize((512,512))
