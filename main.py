@@ -43,10 +43,10 @@ def banner(id):
     img_cropped.putalpha(mask)
     
     
-    pfp = img_cropped.resize((512,512))
+    pfp = img_cropped.resize((420,420))
 
     draw = ImageDraw.Draw(background)
-    font = ImageFont.truetype("KdamThmorPro.ttf",120) 
+    font = ImageFont.truetype("MontserratAlternates.ttf",120) 
     member_text = (f"Welcome {data['username']}")
     
     w, h = draw.textsize(member_text, font)
