@@ -23,9 +23,9 @@ def banner(id):
     avatar_url = f"https://cdn.discordapp.com/avatars/{id}/{data['avatar']}.png"
     avatar = requests.get(avatar_url).content
     background = Image.open("welcomeTemplate.png") 
-    data = BytesIO(avatar)
+    byte_pfp = BytesIO(avatar)
 
-    pfp = Image.open(data).convert("RGBA")
+    pfp = Image.open(byte_pfp).convert("RGBA")
     pfp = pfp.resize((265,265))
 
     draw = ImageDraw.Draw(background)
