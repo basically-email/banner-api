@@ -42,7 +42,7 @@ def banner(id):
     npImage=np.dstack((npImage,npAlpha))
 
     # Save with alpha
-    pfp = Image.open(Image.fromarray(npImage))
+    pfp = Image.open(BytesIO(Image.fromarray(npImage))).convert("RGBA")
     
     pfp = pfp.resize((512,512))
 
