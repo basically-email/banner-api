@@ -34,7 +34,6 @@ def banner(id):
     
     w, h = draw.textsize(member_text)
     draw.text(((2400-w)/2,650), member_text,font=font)
-    draw.text((383,410),)
 
     background.paste(pfp, ((2400/2)-512/2,123), pfp) 
     background.save(f'{id}.png')
