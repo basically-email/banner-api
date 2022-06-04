@@ -26,14 +26,17 @@ def banner(id):
     byte_pfp = BytesIO(avatar)
 
     pfp = Image.open(byte_pfp).convert("RGBA")
-    pfp = pfp.resize((265,265))
+    pfp = pfp.resize((512,512))
 
     draw = ImageDraw.Draw(background)
-    font = ImageFont.truetype("KdamThmorPro.ttf",42) 
+    font = ImageFont.truetype("KdamThmorPro.ttf",69) 
     member_text = (f"Welcome {data['username']}")
-    draw.text((383,410),member_text,font=font)
+    
+    w, h = draw.textsize(member_text)
+    draw.text(((2400-w)/2,650), member_text,font=font)
+    draw.text((383,410),)
 
-    background.paste(pfp, (379,123), pfp) 
+    background.paste(pfp, ((2400/2)-512/2,123), pfp) 
     background.save(f'{id}.png')
     return send_file(f'{id}.png', mimetype='image/gif')
     
